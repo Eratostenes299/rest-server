@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 require('./config/config');
 
 //trabajo del body parser 
@@ -40,6 +41,19 @@ app.delete('/usuario', (req, res) => {
     res.json('Delete');
 });
 
+
+//Seccion productos
+productos = [{
+        nombre: "medias"
+    },
+    {
+        nombre: "pantalones"
+    }
+]
+
+app.get('/productos', function(req, res) {
+    res.json(productos);
+});
 app.listen(process.env.PORT, () => {
     console.log(`Servidor en el puerto:`, process.env.PORT);
 });
