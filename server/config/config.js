@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'dev') {
     urlDB = 'mongodb://localhost:27017/ofertondb';
 } else {
 
-    urlDB = 'mongodb+srv://Lara1994:299X792y458z@ofertoncluster-2g99z.mongodb.net/test?retryWrites=true&w=majority';
+    urlDB = process.env.MONGO_URI;
 }
 
 process.env.urlDB = urlDB;
