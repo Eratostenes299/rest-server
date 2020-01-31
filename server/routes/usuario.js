@@ -21,18 +21,13 @@ app.get('/usuario', (req, res) => {
                 ok: false,
                 err
             });
-            Usuario.count({}, (err, contador) => {
 
-                if (err) return res.json({
-                    ok: false,
-                    message: 'No se ha podido establecer una cantidad'
-                });
-                res.status(200).json({
-                    ok: true,
-                    usersDB,
-                    contador
-                });
+            res.status(200).json({
+                ok: true,
+                usersDB,
+                contador
             });
+
         });
 });
 
