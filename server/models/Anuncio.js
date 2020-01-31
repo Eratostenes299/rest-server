@@ -18,18 +18,19 @@ let anuncioSchema = new Schema({
     FechaFin: {
         type: Date,
         require: true
+    },
+    isActivo: {
+        type: Boolean,
+        default: true
+    },
+    tienda: {
+        type: Schema.ObjectId,
+        ref: 'Tienda'
+    },
+    categoria: {
+        type: Schema.ObjectId,
+        ref: 'CategoriaAnuncio'
     }
-    /**
-     cupon : {
-        {Schema.Types.ObjectId, ref: 'Cupon'}
-    }
-
-     CategoriaAnuncio : {
-       {Schema.Types.ObjectId, ref: 'CategoriaAnuncio'}  
-     }
-
-     Comentario :
-
-     * 
-     */
 });
+
+module.exports = mongoose.model('Anuncio', anuncioSchema);

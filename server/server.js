@@ -6,10 +6,11 @@ require('./config/config');
 
 
 //connection to the database
-mongoose.connect('mongodb://localhost:27017/ofertondb', (err, resp) => {
-    if (err) throw err;
-    console.log('Base de datos online');
-});
+mongoose.connect(process.env.urlDB, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
+    (err, resp) => {
+        if (err) throw err;
+        console.log('Base de datos online');
+    });
 //trabajo del body parser 
 //trabaja con formato x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,19 +19,19 @@ app.use(bodyParser.json());
 
 //Me permite llamar a mis rutas
 app.use(require('./routes/usuario'));
+//Permite llamar a la ruta de tiendas de la base de datos.
+app.use(require('./routes/tiendas'));
+// Permite llamar la ruta de los anuncios de la base de datos.
+app.use(require('./routes/anuncios'));
+//Permite llamar a la ruta de los comentarios de la base de datos.
+app.use(require('./routes/comentarios'));
+//Permite llamar a la ruta de los cupones de la base de datos.
+app.use(require('./routes/cupones'));
+//Permite llamar a la ruta de las categorias de anuncios de la base de datos.
+app.use(require('./routes/categoriaAnuncio'));
+//Ruta propietarios
+app.use(require('./routes/propietario'));
 
-//Seccion productos
-productos = [{
-        nombre: "medias"
-    },
-    {
-        nombre: "pantalones"
-    }
-]
-
-app.get('/productos', function(req, res) {
-    res.json(productos);
-});
 app.listen(process.env.PORT, () => {
     console.log(`Servidor en el puerto:`, process.env.PORT);
 });

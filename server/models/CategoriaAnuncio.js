@@ -9,3 +9,5 @@ let categoriaAnuncioSchema = new Schema({
         require: [true, 'No pueden existir categorias vacias.']
     }
 });
+
+module.exports = mongoose.model('CategoriaAnuncio', categoriaAnuncioSchema);
