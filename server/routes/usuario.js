@@ -14,8 +14,6 @@ app.get('/usuario', (req, res) => {
 
 
     Usuario.find({}, 'nombre correo')
-        .skip(5)
-        .limit(5)
         .exec((err, usersDB) => {
             if (err) return res.status(400).json({
                 ok: false,
