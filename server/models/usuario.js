@@ -40,6 +40,9 @@ let usuarioSchema = new Schema({
         type: Boolean,
         default: true
     },
+    img: {
+        type: String
+    },
     rol: {
         type: String,
         default: 'USER_ROL',

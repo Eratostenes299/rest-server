@@ -2,6 +2,9 @@ const express = require('express');
 const Usuario = require('../models/usuario');
 const _ = require('underscore');
 const app = express();
+//const { OAuth2Client } = require('google-auth-library');
+//const client = new OAuth2Client(process.env.CLIENT_ID);
+
 
 //Permite obtener los usuarios desde la base de datos.
 app.get('/usuario', (req, res) => {
@@ -41,6 +44,7 @@ app.post('/usuario', (req, res) => {
 
     });
 
+
     //Grabar en una base de datos
     usuario.save((err, usuarioDB) => {
         if (err) {
@@ -56,6 +60,13 @@ app.post('/usuario', (req, res) => {
     });
 
 });
+
+//Crear un usuairo con google*
+
+
+//Verificacion de google
+
+
 //Recibir informacion desde el cliente
 app.put('/usuario/:id', (req, res) => {
     let id = req.params.id;
@@ -77,5 +88,3 @@ app.put('/usuario/:id', (req, res) => {
 app.delete('/usuario', (req, res) => {
     res.json('Delete');
 });
-
-module.exports = app;

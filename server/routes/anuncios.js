@@ -1,16 +1,18 @@
 const express = require('express');
 const app = express();
 const Anuncio = require('../models/Anuncio');
+const cors = require('cors');
+
 
 //Este metodo permite a la aplicacion listar todos los anuncios
 app.get('/anuncios', (req, res) => {
     Anuncio.find()
         .exec((err, anuncioDB) => {
-            if (err) return res.status(200).json({
+            if (err) return res.status(400).json({
                 ok: false,
                 err
             });
-            res.status(400).json({
+            res.status(200).json({
                 ok: true,
                 anuncioDB
             });
@@ -21,6 +23,7 @@ app.get('/anuncios', (req, res) => {
 app.post('/anuncios', (req, res) => {
     let body = req.body;
     let anuncio = new Anuncio({
+        ImagenAuncio: body.ImagenAuncio,
         DescripcionAnuncio: body.descripcionAnuncio,
         FechaInicio: new Date(),
         FechaFin: new Date(),
