@@ -15,7 +15,8 @@ let tiendaSchema = new Schema({
         type: String
     },
     localizacionTienda: {
-        type: [Number, Number]
+        type: [Number, Number],
+        default: [0.8129771, -77.7179133]
     },
     valoracionTienda: {
         type: Number,
@@ -25,6 +26,10 @@ let tiendaSchema = new Schema({
         type: Boolean,
         require: [true, 'Este campo es necesario para la tienda.'],
         default: false
+    },
+    imgTienda: {
+        type: String,
+        default: ''
     }
 
 });

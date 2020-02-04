@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const Anuncio = require('../models/Anuncio');
-const cors = require('cors');
+
 
 
 //Este metodo permite a la aplicacion listar todos los anuncios
