@@ -6,7 +6,7 @@ const app = express();
 const { verficaToken } = require('../middlewares/autenticacion');
 
 //Permite obtener los usuarios desde la base de datos.
-app.get('/usuario', verficaToken, (req, res, next) => {
+app.get('/usuario', verficarToken, (req, res, next) => {
 
     //recibir informacion de los usuarios
     let desde = req.query.desde || 0;

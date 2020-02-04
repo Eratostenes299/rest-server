@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+
 require('./config/config');
 
 
@@ -13,7 +15,7 @@ mongoose.connect(process.env.urlDB, { useNewUrlParser: true, useCreateIndex: tru
         console.log('Base de datos online');
     });
 //trabajo del body parser 
-
+app.use(cors());
 //trabaja con formato x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 //Trabaja con formato json
