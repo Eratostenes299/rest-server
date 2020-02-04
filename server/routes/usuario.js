@@ -2,12 +2,11 @@ const express = require('express');
 const Usuario = require('../models/usuario');
 const _ = require('underscore');
 const app = express();
-//const { OAuth2Client } = require('google-auth-library');
-//const client = new OAuth2Client(process.env.CLIENT_ID);
 
+const { verficaToken } = require('../middlewares/autenticacion');
 
 //Permite obtener los usuarios desde la base de datos.
-app.get('/usuario', (req, res) => {
+app.get('/usuario', verficaToken, (req, res, next) => {
 
     //recibir informacion de los usuarios
     let desde = req.query.desde || 0;
@@ -27,7 +26,7 @@ app.get('/usuario', (req, res) => {
                 ok: true,
                 usersDB
             });
-
+            next();
         });
 });
 
@@ -88,3 +87,5 @@ app.put('/usuario/:id', (req, res) => {
 app.delete('/usuario', (req, res) => {
     res.json('Delete');
 });
+
+module.exports = app;
