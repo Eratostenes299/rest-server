@@ -29,7 +29,7 @@ let tiendaSchema = new Schema({
     },
     imgTienda: {
         type: String,
-        default: ''
+        default: './assets/'
     }
 
 });

@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 
 let anuncioSchema = new Schema({
+    TituloAnuncio: {
+        type: String,
+        require: [true, 'El titulo del anuncio es necesario']
+    },
     ImagenAnuncio: {
         type: String,
         require: [true, 'La imagen del anuncio es requerida.']
@@ -10,6 +14,14 @@ let anuncioSchema = new Schema({
     DescripcionAnuncio: {
         type: String,
         require: [true, 'La descripcion del anuncio es requerida.']
+    },
+    PrecioProducto: {
+        type: Number,
+        require: [true, 'El campo del precio es requerido']
+    },
+    DescuentoProducto: {
+        type: Number,
+        default: 0
     },
     FechaInicio: {
         type: Date,
@@ -23,7 +35,11 @@ let anuncioSchema = new Schema({
         type: Boolean,
         default: true
     },
-    tienda: {
+    CantidadCupones: {
+        type: Number,
+        default: 0
+    },
+    Tienda: {
         type: Schema.ObjectId,
         ref: 'Tienda'
     },
@@ -31,6 +47,7 @@ let anuncioSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'CategoriaAnuncio'
     }
+
 });
 
 module.exports = mongoose.model('Anuncio', anuncioSchema);

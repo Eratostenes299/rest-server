@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-const Categoria = require('../models/CategoriaAnuncio');
+const categoriaAnuncio = require('../models/CategoriaAnuncio');
 
 //Este metodo permite a la aplicacion listar todos los anuncios
 app.get('/categoriaAnuncios', (req, res) => {
-    Categoria.find({})
+    categoriaAnuncio.find({})
         .exec((err, categorias) => {
             if (err) return res.status(400).json({
                 ok: false,
@@ -39,7 +39,7 @@ app.post('/categoriaAnuncios', (req, res) => {
 app.put('/categoriaAnuncios/:id', (req, res) => {
     let id = req.params.id;
     let body = req.body;
-    Categoria.findByIdAndUpdate(id, body, { new: true }, (err, update) => {
+    categoriaAnuncio.findByIdAndUpdate(id, body, { new: true }, (err, update) => {
         if (err) return res.status(400).json({
             ok: false,
             message: 'Problems updating your data, maybe the id does not have coinsidences',
