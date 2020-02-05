@@ -56,10 +56,10 @@ app.post('/anuncios', (req, res) => {
     });
 });
 
-app.get('/auncios?id', (req, res) => {
+app.post('/anuncios/consulta/:id', (req, res) => {
     let body = req.params.id;
-
-    Anuncio.findById({ "_id": body.id })
+    let consulta = body.split("=");
+    Anuncio.findById(consulta[1])
         .exec((err, anuncioDB) => {
 
 
