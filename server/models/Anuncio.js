@@ -40,13 +40,13 @@ let anuncioSchema = new Schema({
         default: 0
     },
     Tienda: {
-        type: Schema.ObjectId,
-        ref: 'Tienda',
+        type: Schema.Types.ObjectId,
+        ref: "Tienda",
         require: true
     },
     Categoria: {
-        type: Schema.ObjectId,
-        ref: 'CategoriaAnuncio',
+        type: Schema.Types.ObjectId,
+        ref: "CategoriaAnuncio",
         require: true
     }
 
