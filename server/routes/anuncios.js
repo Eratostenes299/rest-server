@@ -68,7 +68,7 @@ app.get('/anuncios/consulta/:id', (req, res) => {
                 err
             });
             res.status(200).json({
-                ok: false,
+                ok: true,
                 anuncioDB
             });
 
