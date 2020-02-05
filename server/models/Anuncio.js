@@ -41,11 +41,13 @@ let anuncioSchema = new Schema({
     },
     Tienda: {
         type: Schema.ObjectId,
-        ref: 'Tienda'
+        ref: 'Tienda',
+        require: true
     },
-    categoria: {
+    Categoria: {
         type: Schema.ObjectId,
-        ref: 'CategoriaAnuncio'
+        ref: 'CategoriaAnuncio',
+        require: true
     }
 
 });

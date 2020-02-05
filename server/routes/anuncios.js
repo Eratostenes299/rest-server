@@ -9,7 +9,7 @@ app.get('/anuncios', (req, res) => {
     Anuncio.find()
         .exec((err, anuncioDB) => {
 
-            Tienda.populate(anuncioDB, { path: 'tienda' }, (err, anuncioDB) => {
+            Tienda.populate(anuncioDB, { path: 'tiendas' }, (err, anuncioDB) => {
 
                 if (err) return res.status(400).json({
                     ok: false,
@@ -33,13 +33,13 @@ app.post('/anuncios', (req, res) => {
         ImagenAuncio: body.ImagenAuncio,
         DescripcionAnuncio: body.DescripcionAnuncio,
         FechaInicio: new Date(),
-        FechaFin: body.date,
+        FechaFin: body.FechaFin,
         isActive: true,
         DescuentoProducto: body.DescuentoProducto,
         PrecioProducto: body.PrecioProducto,
         CantidadCupones: body.CantidadCupones,
-        tienda: body.tienda,
-        categoria: body.categoria
+        Tienda: body.Tienda,
+        Categoria: body.Categoria
     });
 
     anuncio.save((err, anuncioDB) => {
@@ -56,7 +56,12 @@ app.post('/anuncios', (req, res) => {
     });
 });
 
+app.post('/auncios/:id', (req, res) => {
+    let body = req.body.id;
 
+
+
+});
 //FuncionExterna que permite crear cupones en base al anuncio
 function GenerarCupones(numeroCupones, idAnuncio) {
     for (let i = 0; i < numeroCupones; i++) {
