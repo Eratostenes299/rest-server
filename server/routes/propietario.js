@@ -77,7 +77,7 @@ app.post('/propietario', (req, res) => {
             ok: false,
             err
         });
-        res.status(400).json({
+        res.status(200).json({
             ok: true,
             propietarioDB
         });
