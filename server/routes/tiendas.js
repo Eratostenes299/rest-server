@@ -21,7 +21,7 @@ app.get('/tiendas', (req, res) => {
 
 });
 
-app.get('/tienda/consulta/:id', (req, res) => {
+app.get('/tiendas/consulta/:id', (req, res) => {
     let body = req.params.id;
     let consulta = body.split("=");
     Tienda.findById(consulta[1])
@@ -34,7 +34,7 @@ app.get('/tienda/consulta/:id', (req, res) => {
             });
             res.status(200).json({
                 ok: true,
-                TiendaDb
+                tiendaDB
             });
 
         });
