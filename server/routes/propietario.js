@@ -68,7 +68,7 @@ app.post('/propietario', (req, res) => {
         nombrePropietario: body.nombrePropietario,
         apellidoPropietario: body.apellidoPropietario,
         fotoPropietario: body.fotoPropietario,
-        correoPropietario: body.fotoPropietario,
+        correoPropietario: body.correoPropietario,
         passWord: body.passWord
     });
 

@@ -21,6 +21,25 @@ app.get('/tiendas', (req, res) => {
 
 });
 
+app.get('/tienda/consulta/:id', (req, res) => {
+    let body = req.params.id;
+    let consulta = body.split("=");
+    Tienda.findById(consulta[1])
+        .exec((err, tiendaDB) => {
+
+
+            if (err) return res.status(400).json({
+                ok: false,
+                err
+            });
+            res.status(200).json({
+                ok: true,
+                TiendaDb
+            });
+
+        });
+
+});
 //Recibe desde el metodo POST datos desde el cliente, permite crear un registro en la base.
 app.post('/tiendas', (req, res) => {
     let body = req.body;
