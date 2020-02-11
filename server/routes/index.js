@@ -21,5 +21,6 @@ app.use(require('./uploads'));
 app.use(require('./login'));
 //
 app.use(require('./testUser'));
-
+//Imagens
+app.use(require('./imagenes'));
 module.exports = app;

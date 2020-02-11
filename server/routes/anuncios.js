@@ -98,7 +98,10 @@ function getNumeroCupon() {
 app.put('/anuncios/:id', (req, res) => {
 
 });
+//Este metodo permite regresar solo los anuncios de la tienda que los genero
+app.post('/anuncios/:idTienda', (req, resp) => {
 
+});
 //Este metodo permite remover aparentemente de la base de datos los datos del usuario.
 app.delete('/anuncios', (req, res) => {
     res.status(200).json({

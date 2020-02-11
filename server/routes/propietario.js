@@ -1,18 +1,26 @@
 const express = require('express');
 const app = express();
 const Propietario = require('../models/UsuarioOwner');
+const jwt = require('jsonwebtoken');
 //Consulta de propietarios
 app.get('/propietario', (req, res) => {
     Propietario.find()
-        .exec((err, propietarios) => {
-
+        .exec((err, propietariosDB) => {
+            if (err) return res.status(400).json({
+                ok: false,
+                err
+            });
+            res.status(200).json({
+                ok: true,
+                propietariosDB
+            });
         });
 });
-app.post('/propietario/login', (req, res) => {
+app.post('/propietario/inicio', (req, res) => {
 
     let body = req.body;
 
-    UsuarioOwner.findOne({ correoProietario: body.correo }, (err, userDB) => {
+    Propietario.findOne({ correoProietario: body.correo }, (err, userDB) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
@@ -87,5 +95,7 @@ app.put('/propietario', (req, res) => {
 app.delete('/propietario', (req, res) => {
 
 });
+
+
 
 module.exports = app;

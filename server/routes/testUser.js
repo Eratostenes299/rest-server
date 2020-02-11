@@ -28,7 +28,7 @@ app.get('/usuario', verificarToken, (req, res) => {
 });
 
 
-app.post('/usuario', verificarToken, (req, res) => {
+app.post('/usuario', (req, res) => {
     let body = req.body;
 
     let usuario = new Usuario({
@@ -58,4 +58,20 @@ app.post('/usuario', verificarToken, (req, res) => {
 
 });
 
+//Actualizar usuarios
+app.put('/usuario/:id', (req, res) => {
+    let id = req.params.id;
+    let body = _.pick(req.body, ['nombre', 'apellido', 'password', 'genero']); //Parametros
+
+    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, userDB) => {
+        if (err) return res.status(400).json({
+            ok: false,
+            err
+        });
+        res.status(200).json({
+            ok: true,
+            userDB
+        });
+    });
+});
 module.exports = app;
