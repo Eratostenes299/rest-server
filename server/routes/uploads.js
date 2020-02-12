@@ -44,7 +44,7 @@ app.put('/uploads/:tipo/:id', (req, res) => {
     //Manejar el archivo del imagen
     let nombreGuardar = `${id}-${new Date().getMilliseconds()}.${extension}`;
 
-    archivoDestino.mv(`uploads\${tipo}\${nombreGuardar}`, (err) => {
+    archivoDestino.mv(`uploads/${tipo}/${nombreGuardar}`, (err) => {
         if (err) {
             res.status(500).json({
                 ok: false,
