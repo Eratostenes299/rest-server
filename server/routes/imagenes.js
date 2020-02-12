@@ -6,11 +6,11 @@ const path = require('path');
 app.get('/imagen/:tipo/:img', (req, res) => {
     let tipo = req.params.tipo;
     let img = req.params.img;
-    console.log(tipo);
-    let pathImagen = path.resolve(__dirname, `../../uploads/${tipo}/${img}`);
+    console.log(img);
+    let pathImagen = path.resolve(__dirname, `../uploads/${tipo}/${img}`);
     //../../uploads/${tipo}/${img}
-
-    if (!fs.existsSync.pathImagen) {
+    console.log(pathImagen);
+    if (fs.existsSync(pathImagen)) {
         res.sendFile(pathImagen);
     } else {
 

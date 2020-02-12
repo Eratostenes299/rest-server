@@ -44,7 +44,7 @@ app.put('/uploads/:tipo/:id', (req, res) => {
     //Manejar el archivo del imagen
     let nombreGuardar = `${id}-${new Date().getMilliseconds()}.${extension}`;
 
-    archivoDestino.mv(`../uploads/${tipo}/${nombreGuardar}`, (err) => {
+    archivoDestino.mv(`uploads/${tipo}/${nombreGuardar}`, (err) => {
         if (err) {
             res.status(500).json({
                 ok: false,
@@ -144,7 +144,7 @@ function imgAnuncios(id, res, nombreGuardar) {
             });
         }
 
-        anuncioDB.img = nombreGuardar;
+        anuncioDB.ImagenAnuncio = nombreGuardar;
         anuncioDB.save((err, anuncioDB2) => {
             if (err) {
                 res.status(400).json({
