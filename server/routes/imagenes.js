@@ -8,7 +8,7 @@ app.get('/imagen/:tipo/:img', (req, res) => {
     let img = req.params.img;
     console.log(img);
     let slash = "\\";
-    let pathImagen = path.resolve(__dirname, `../uploads/${tipo}/${img}`);
+    let pathImagen = `uploads\${tipo}\${img}`;
     //../../uploads/${tipo}/${img}
     console.log(pathImagen);
     if (fs.existsSync.pathImagen) {
